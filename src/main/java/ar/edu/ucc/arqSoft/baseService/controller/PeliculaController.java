@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import ar.edu.ucc.arqSoft.baseService.dto.PeliculaResponseDto;
 import ar.edu.ucc.arqSoft.baseService.service.PeliculaService;
 
@@ -19,6 +20,12 @@ public class PeliculaController {
 	@Autowired
 	private PeliculaService peliculaService;
 	
+	 @RequestMapping(method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
+	    public @ResponseBody List<PeliculaResponseDto> getAllPeliculas()
+	    {
+	        return peliculaService.getAllPeliculas();
+	    }
+	 
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody PeliculaResponseDto lookupPeliculaById(@PathVariable("id") Long id)
     {

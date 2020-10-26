@@ -33,9 +33,10 @@ public class Socio extends GenericObject {
 	
 	@NotNull
 	@Size(min = 1, max = 400)
-	@Column(name = "EmAIL")
+	@Column(name = "EMAIL")
 	private String email;
 	
+	//un socio tiene muchos alquileres
 	@OneToMany(mappedBy="socio", fetch = FetchType.LAZY)
 	private Set<Alquiler> alquilers;
 	

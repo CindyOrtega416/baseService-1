@@ -1,5 +1,7 @@
 package ar.edu.ucc.arqSoft.baseService.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,10 +24,16 @@ public class PeliculaService {
 		Pelicula pelicula = peliculaDao.load(id);
 		
 		PeliculaResponseDto dto = new PeliculaResponseDto();
-		dto.setNombre(pelicula.getTitulo());
+		dto.setTitulo(pelicula.getTitulo());
 		
 		return dto;
 		
+	}
+
+
+	public List<PeliculaResponseDto> getAllPeliculas() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

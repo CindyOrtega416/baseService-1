@@ -1,6 +1,8 @@
 package ar.edu.ucc.arqSoft.baseService.dto;
 
-public class AlquilerRequestDto {
+import ar.edu.ucc.arqSoft.common.dto.DtoEntity;
+
+public class AlquilerRequestDto implements DtoEntity {
 
 		private Long socioId;
 		

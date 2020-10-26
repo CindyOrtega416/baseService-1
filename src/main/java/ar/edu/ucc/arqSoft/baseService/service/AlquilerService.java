@@ -46,6 +46,12 @@ public class AlquilerService {
 		return response;
 		
 	}
+
+
+	public AlquilerResponseDto insertAlquiler(AlquilerRequestDto request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 	

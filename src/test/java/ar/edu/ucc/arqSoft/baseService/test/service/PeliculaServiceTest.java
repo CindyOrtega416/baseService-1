@@ -1,4 +1,4 @@
-package ar.edu.ucc.arqSoft.baseService.test.dao;
+package ar.edu.ucc.arqSoft.baseService.test.service;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,23 +6,24 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.ucc.arqSoft.baseService.dao.UserDao;
-import ar.edu.ucc.arqSoft.baseService.model.User;
+import ar.edu.ucc.arqSoft.baseService.dto.PeliculaResponseDto;
+import ar.edu.ucc.arqSoft.baseService.service.PeliculaService;
+
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:test-context.xml", "classpath:/spring/applicationContext.xml" })
-@Transactional
-public class UserDaoTest {
+public class PeliculaServiceTest{
+	
 	@Autowired
-	private UserDao userDao;
-
+	private PeliculaService peliculaService;
+	
 	@Test
 	public void testFindById() {
-		User user = userDao.load((long) 1);
-
-		Assert.assertEquals("QUIROGA", user.getLastName().toUpperCase());
+		PeliculaResponseDto response = peliculaService.getPeliculaById((long) 1);
+		
+		Assert.assertEquals("Resident Evil", response.getTitulo());
 		return;
 	}
 
