@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.ucc.arqSoft.baseService.dao.PeliculaDao;
 import ar.edu.ucc.arqSoft.baseService.model.Pelicula;
+import ar.edu.ucc.arqSoft.common.exception.EntityNotFoundException;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -28,7 +29,7 @@ public class PeliculaDaoTest  {
 	private PeliculaDao peliculaDao;
 
 	@Test
-	public void testFindById() {
+	public void testFindById() throws EntityNotFoundException {
 		logger.info("Test de busqueda de Pelicula por ID");
 		Pelicula pelicula = peliculaDao.load((long) 1);
 		

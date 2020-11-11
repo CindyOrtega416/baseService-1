@@ -9,6 +9,7 @@ import ar.edu.ucc.arqSoft.baseService.dto.SocioRequestDto;
 import ar.edu.ucc.arqSoft.baseService.dto.SocioResponseDto;
 import ar.edu.ucc.arqSoft.baseService.model.Socio;
 import ar.edu.ucc.arqSoft.common.dto.ModelDtoConverter;
+import ar.edu.ucc.arqSoft.common.exception.BadRequestException;
 
 
 @Service
@@ -19,7 +20,7 @@ public class SocioService {
 	private SocioDao socioDao;
 
 	
-	public SocioResponseDto insertSocio(SocioRequestDto request) {
+	public SocioResponseDto insertSocio(SocioRequestDto request) throws BadRequestException{
 		
 		Socio socio = (Socio) new ModelDtoConverter().convertToEntity(new Socio(), request);
 		

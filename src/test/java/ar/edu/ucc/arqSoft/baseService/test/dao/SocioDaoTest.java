@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.ucc.arqSoft.baseService.dao.SocioDao;
 import ar.edu.ucc.arqSoft.baseService.model.Socio;
+import ar.edu.ucc.arqSoft.common.exception.BadRequestException;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -26,7 +27,7 @@ private static final Logger logger = LogManager.getLogger(SocioDaoTest.class);
 	private SocioDao socioDao;
 	
 	@Test
-	public void testRegister() {
+	public void testRegister() throws BadRequestException {
 
 		logger.info("Test de Registro de Socio");
 		

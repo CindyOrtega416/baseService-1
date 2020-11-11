@@ -5,7 +5,9 @@ import ar.edu.ucc.arqSoft.common.dto.DtoEntity;
 public class PeliculaResponseDto implements DtoEntity{
 	
 	private String titulo;
+	
 	private Long año;
+	
 	private Long id;
 	
 	public Long getId() {

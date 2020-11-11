@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ar.edu.ucc.arqSoft.baseService.dto.SocioRequestDto;
 import ar.edu.ucc.arqSoft.baseService.dto.SocioResponseDto;
 import ar.edu.ucc.arqSoft.baseService.service.SocioService;
+import ar.edu.ucc.arqSoft.common.exception.BadRequestException;
 
 
 
@@ -22,7 +23,7 @@ public class SocioServiceTest {
 	private SocioService socioService;
 	
 	@Test
-	public void testInsert() {
+	public void testInsert() throws BadRequestException {
 		SocioRequestDto request = new SocioRequestDto();
 		
 		request.setApellido("Ortega");

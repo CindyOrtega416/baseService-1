@@ -9,6 +9,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import ar.edu.ucc.arqSoft.baseService.dto.PeliculaResponseDto;
 import ar.edu.ucc.arqSoft.baseService.service.PeliculaService;
+import ar.edu.ucc.arqSoft.common.exception.BadRequestException;
+import ar.edu.ucc.arqSoft.common.exception.EntityNotFoundException;
 
 
 
@@ -20,7 +22,7 @@ public class PeliculaServiceTest{
 	private PeliculaService peliculaService;
 	
 	@Test
-	public void testFindById() {
+	public void testFindById() throws EntityNotFoundException, BadRequestException {
 		PeliculaResponseDto response = peliculaService.getPeliculaById((long) 1);
 		
 		Assert.assertEquals("Resident Evil", response.getTitulo());
