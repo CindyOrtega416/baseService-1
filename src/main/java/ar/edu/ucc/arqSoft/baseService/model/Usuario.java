@@ -5,6 +5,9 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -13,11 +16,11 @@ import javax.validation.constraints.Size;
 import ar.edu.ucc.arqSoft.common.model.GenericObject;
 
 @Entity
-@Table(name = "SOCIO")
-public class Socio extends GenericObject {
+@Table(name = "USUARIO")
+public class Usuario extends GenericObject{
 	
 	@NotNull
-	@Size(min = 1, max = 400)
+	@Size(min = 1, max = 250)
 	@Column(name = "NOMBRE")
 	private String nombre;
 	
@@ -27,27 +30,23 @@ public class Socio extends GenericObject {
 	private String apellido;
 	
 	@NotNull
-	@Size(min = 1, max = 12)
-	@Column(name = "DNI")
-	private String dni;
-	
-	@NotNull
-	@Size(min = 1, max = 400)
+	@Size(min = 1, max = 250)
 	@Column(name = "EMAIL")
 	private String email;
 	
-	//un socio tiene muchos alquileres
-	@OneToMany(mappedBy="socio", fetch = FetchType.LAZY)
-	private Set<Alquiler> alquilers;
+	@OneToMany(mappedBy="usuario", fetch = FetchType.LAZY)	//un usuario puede tener MUCHAS tareas
+	private Set<Tarea> tareas;
 	
 
-	public Set<Alquiler> getAlquilers() {
-		return alquilers;
-	}
-
-	public void setAlquilers(Set<Alquiler> alquilers) {
-		this.alquilers = alquilers;
-	}
+	@ManyToMany
+	 @JoinTable(
+	   name="PROYECTO_USUARIO",
+	   joinColumns=@JoinColumn(name="ID_USUARIO", referencedColumnName="ID"),
+	   inverseJoinColumns=@JoinColumn(name="ID_PROYECTO", referencedColumnName="ID"))
+	public Set<Proyecto> proyectos ;
+	
+	public Set<Proyecto> getProyectos(){return proyectos;}
+	
 
 	public String getNombre() {
 		return nombre;
@@ -65,14 +64,6 @@ public class Socio extends GenericObject {
 		this.apellido = apellido;
 	}
 
-	public String getDni() {
-		return dni;
-	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -80,4 +71,20 @@ public class Socio extends GenericObject {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public Set<Tarea> getTareas() {
+		return tareas;
+	}
+
+	public void setTareas(Set<Tarea> tareas) {
+		this.tareas = tareas;
+	}
+
+	public void setProyectos(Set<Proyecto> proyectos) {
+		this.proyectos = proyectos;
+	}
+	
+		
+
+
 }
